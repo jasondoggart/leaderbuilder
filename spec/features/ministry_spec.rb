@@ -26,4 +26,25 @@ describe 'Mininstry' do
     expect(page).to have_content('New name')
   end
 
+  it 'has an index page that shows all ministries' do
+    ministry1 = FactoryBot.create(:ministry)
+    ministry2 = FactoryBot.create(:ministry)
+    ministry3 = FactoryBot.create(:ministry)
+    visit ministries_path
+    expect(page).to have_content(ministry1.name)
+    expect(page).to have_content(ministry2.name)
+    expect(page).to have_content(ministry3.name)
+  end
+
+  it 'has a show page that lists all associated roles' do
+    ministry = FactoryBot.create(:ministry)
+    role1 = FactoryBot.create(:role, ministry: ministry)
+    role2 = FactoryBot.create(:role, ministry: ministry)
+    role3 = FactoryBot.create(:role, ministry: ministry)
+    visit ministry_path(ministry)
+    expect(page).to have_content(role1.name)
+    expect(page).to have_content(role2.name)
+    expect(page).to have_content(role3.name)
+  end
+
 end

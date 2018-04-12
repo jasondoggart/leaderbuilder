@@ -1,0 +1,20 @@
+<h1>Users</h1>
+<table>
+  <thead>
+    <tr>
+      <% @users.first.attributes.each do |name, value| %>
+        <th><%= name.humanize %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <% user.attributes.each do |name, value| %>
+          <td><%= value %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

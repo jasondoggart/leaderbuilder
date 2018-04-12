@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 
   resources :ministries
   resources :roles
+  resources :users, only: :index
 end

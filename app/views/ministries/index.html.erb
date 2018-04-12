@@ -1,0 +1,19 @@
+<h1>Ministries</h1>
+<table>
+  <thead>
+    <tr>
+      <% @ministries.first.attributes.each do |name, value| %>
+        <th><%= name.humanize %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @ministries.each do |ministry| %>
+      <tr>
+        <% ministry.attributes.each do |name, value| %>
+          <td><%= value %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

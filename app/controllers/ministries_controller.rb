@@ -2,6 +2,10 @@ class MinistriesController < ApplicationController
   before_action :set_ministry, only: [:show, :edit, :update]
   before_action :set_users, only: [:new, :edit, :create, :udpate]
 
+  def index
+    @ministries = Ministry.all
+  end
+
   def new
     @ministry = Ministry.new
   end

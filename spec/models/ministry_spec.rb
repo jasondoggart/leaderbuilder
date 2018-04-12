@@ -14,5 +14,10 @@ RSpec.describe Ministry, type: :model do
       @ministry.name = ''
       expect(@ministry).to_not be_valid
     end
+
+    it 'cannot be created without a director' do
+      @ministry.director = nil
+      expect(@ministry).to_not be_valid
+    end
   end
 end

@@ -10,9 +10,10 @@ describe 'Mininstry' do
     before_count = Ministry.count
     visit new_ministry_path
     fill_in('Ministry Name', with: 'Ministry')
+    select(@user.full_name, from: 'ministry_director_id')
     click_on('Add Ministry')
-    expect(current_path).to eq(ministry_path(Ministry.last))
     expect(Ministry.count).to eq(before_count + 1)
+    expect(current_path).to eq(ministry_path(Ministry.last))
     expect(page).to have_content(Ministry.last.name)
   end
 

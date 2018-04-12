@@ -1,5 +1,6 @@
 class MinistriesController < ApplicationController
   before_action :set_ministry, only: [:show, :edit, :update]
+  before_action :set_users, only: [:new, :edit, :create, :udpate]
 
   def new
     @ministry = Ministry.new
@@ -33,10 +34,14 @@ class MinistriesController < ApplicationController
   protected
 
   def ministry_params
-    params.require(:ministry).permit(:name)
+    params.require(:ministry).permit(:name, :director_id)
   end
 
   def set_ministry
     @ministry = Ministry.find(params[:id])
+  end
+
+  def set_users
+    @users = User.all
   end
 end

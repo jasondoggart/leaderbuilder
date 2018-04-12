@@ -3,7 +3,7 @@ class MinistriesController < ApplicationController
   before_action :set_users, only: [:new, :edit, :create, :udpate]
 
   def index
-    @ministries = Ministry.all
+    @ministries = Ministry.paginate(:page => params[:page], :per_page => 15)
   end
 
   def new
@@ -33,6 +33,7 @@ class MinistriesController < ApplicationController
   end
 
   def show
+    @roles = @ministry.roles.paginate(:page => params[:page], :per_page => 15)
   end
 
   protected

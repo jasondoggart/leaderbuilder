@@ -1,0 +1,20 @@
+<%= form_for @ministry do |f| %>
+  <% if @ministry.errors.any? %>
+    <div class="form-errors">
+      This couldn't be completed because there are
+      <%= pluralize(@ministry.errors.count, 'errors') %>.
+      Please update the form and try again.
+    </div>
+    <ul>
+      <% @ministry.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= f.label :name, 'Ministry Name' %>
+  <%= f.text_field :name %>
+
+  <%= f.submit @ministry.new_record? ? 'Add Ministry' : 'Update Ministry' %>
+
+<% end %>

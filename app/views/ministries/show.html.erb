@@ -1,0 +1,16 @@
+<h1><%= @ministry.name %></h1>
+<p>
+<%=
+  link_to 'Update',
+  edit_ministry_path(@ministry)
+%>
+</p>
+<p>
+<%=
+  link_to 'Delete',
+  ministry_path(@ministry),
+  method: :delete,
+  data: { confirm: "Are you sure?" }
+%>
+</p>
+

@@ -13,4 +13,14 @@
   data: { confirm: "Are you sure?" }
 %>
 </p>
-
+<p>
+<%=
+  link_to 'Add new role',
+  new_role_path(:ministry => @ministry)
+%>
+<% if @ministry.roles.any? %>
+  <h3>Roles</h3>
+  <% @ministry.roles.each do |role| %>
+    <p><%= role.name %></p>
+  <% end %>
+<% end %>

@@ -6,16 +6,20 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
   </head>
 
   <body>
-    <%= yield %>
-    <% if signed_in? %>
-      Signed in as: <%= current_user.email %>
-      <%= button_to 'Sign out', sign_out_path, method: :delete %>
-    <% else %>
-      <%= link_to 'Sign in', sign_in_path %>
-    <% end %>
+    <div class="main-grid">
+      <% if signed_in? %>
+        <%= render partial: 'layouts/sidebar' %>
+      <% else %>
+        <div></div><!-- include empty div for grid -->
+      <% end %>
+      <div class="main">
+        <%= yield %>
+      </div>
+    </div>
 
     <div id="flash">
       <% flash.each do |key, value| %>

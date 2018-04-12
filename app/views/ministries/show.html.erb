@@ -1,26 +1,90 @@
-<h1><%= @ministry.name %></h1>
-<p>
-<%=
-  link_to 'Update',
-  edit_ministry_path(@ministry)
-%>
-</p>
-<p>
-<%=
-  link_to 'Delete',
-  ministry_path(@ministry),
-  method: :delete,
-  data: { confirm: "Are you sure?" }
-%>
-</p>
-<p>
-<%=
-  link_to 'Add new role',
-  new_role_path(:ministry => @ministry)
-%>
-<% if @ministry.roles.any? %>
-  <h3>Roles</h3>
+<div class="section-heading">
+  <%= @ministry.name %>
+</div>
+<div class="section-sub-heading">
+  <div class="action-items-grid">
+    <div class="action-item">
+      <div class="action-item-icon">
+      </div>
+      <%=
+        link_to 'Update',
+        edit_ministry_path(@ministry),
+        class: 'action-item-text pretty-link'
+      %>
+    </div>
+    <div class="action-item">
+      <div class="action-item-icon">
+      </div>
+      <%=
+        link_to 'Delete',
+        ministry_path(@ministry),
+        method: :delete,
+        class: 'action-item-text pretty-link'
+      %>
+    </div>
+  </div>
+</div>
+<div class="sub-section-title">
+  <div class="sub-section-icon">
+    <i class="fas fa-users"></i>
+  </div>
+  <div class="item-sub-heading-text">
+    Roles
+  </div>
+</div>
+<div class="grid-table">
+  <div class="grid-table-header">
+    <div class="grid-table-header-cell">
+      <div class="grid-table-header-icon">
+      </div>
+      <div class="grid-table-header-text">
+        Role Name
+      </div>
+    </div>
+    <div class="grid-table-header-cell">
+      <div class="grid-table-header-icon">
+      </div>
+      <div class="grid-table-header-text">
+        Role Type
+      </div>
+    </div>
+    <div class="grid-table-header-cell">
+      <div class="grid-table-header-icon">
+      </div>
+      <div class="grid-table-header-text">
+        Team Member
+      </div>
+    </div>
+  </div>
   <% @ministry.roles.each do |role| %>
-    <p><%= role.name %></p>
+    <div class="grid-table-data">
+      <div class="grid-table-data-cell">
+        <%=
+          link_to role.name,
+          role_path(role),
+          class: 'grid-table-data-text pretty-link'
+        %>
+      </div>
+      <div class="grid-table-data-cell">
+        <div class="grid-table-data-text">
+          <%= role.role_type %>
+        </div>
+      </div>
+      <div class="grid-table-data-cell">
+        <div class="grid-table-data-text">
+          <%= role.team_member.full_name %>
+        </div>
+      </div>
+    </div>
   <% end %>
-<% end %>
+  <div class="grid-table-last-row">
+    <div class="grid-table-last-row-icon">
+      <i class="fas fa-plus"></i>
+    </div>
+    <%=
+      link_to 'Add new role',
+      new_role_path(:ministry => @ministry),
+      class: 'grid-table-last-row-text pretty-link'
+    %>
+  </div>
+</div>

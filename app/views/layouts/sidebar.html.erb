@@ -1,0 +1,28 @@
+<div class="sidebar">
+  <div class="sidebar-menu">
+    <div class="sidebar-title">
+      <%= current_user.full_name %>
+    </div>
+    <div class="sidebar-menu-item">
+      <div class="sidebar-menu-item-icon">
+        <i class="fas fa-hand-holding-heart"></i>
+      </div>
+      <%=
+        link_to 'Ministries',
+        ministries_path,
+        class:  'sidebar-menu-item-text'
+      %>
+    </div>
+    <div class="sidebar-menu-item">
+      <div class="sidebar-menu-item-icon">
+        <i class="fas fa-hand-holding-heart"></i>
+      </div>
+      <%=
+        link_to 'Sign out',
+        sign_out_path,
+        method: :delete,
+        class:  'sidebar-menu-item-text'
+      %>
+    </div>
+  </div>
+</div>

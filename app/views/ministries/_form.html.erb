@@ -11,18 +11,40 @@
       <% end %>
     </ul>
   <% end %>
-
-  <%= f.label :name, 'Ministry Name' %>
-  <%= f.text_field :name %>
-
-  <%= f.label :director_id, 'Director' %>
-  <%=
-    f.collection_select :director_id,
-    @users,
-    :id,
-    :full_name
-  %>
-
-  <%= f.submit @ministry.new_record? ? 'Add Ministry' : 'Update Ministry' %>
-
+  <div class="inline-form">
+    <div class="inline-form-label">
+      <div class="inline-form-label-icon">
+        <i class="fas fa-align-justify"></i>
+      </div>
+      <%=
+        f.label :name,
+        'Ministry Name',
+        class: 'inline-form-label-text'
+      %>
+    </div>
+    <%=
+      f.text_field :name,
+      class: 'inline-form-input'
+    %>
+    <div class="inline-form-label">
+      <div class="inline-form-label-icon">
+        <i class="far fa-user"></i>
+      </div>
+      <%=
+        f.label :director_id,
+        'Director',
+        class: 'inline-form-label-text'
+      %>
+    </div>
+    <%=
+      f.collection_select :director_id,
+      @users,
+      :id,
+      :full_name,
+      {},
+      {class: 'inline-form-input'}
+    %>
+  <%= f.submit @ministry.new_record? ? 'Add Ministry' : 'Update Ministry',
+    class: 'form-submit-button'%>
+  </div>
 <% end %>

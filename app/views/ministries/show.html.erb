@@ -66,6 +66,9 @@
     Roles
   </div>
 </div>
+<div class="section-sub-heading">
+  <%= will_paginate @roles %>
+</div>
 <div class="grid-table">
   <div class="grid-table-header">
     <div class="grid-table-header-cell">
@@ -93,7 +96,7 @@
       </div>
     </div>
   </div>
-  <% @ministry.roles.each do |role| %>
+  <% @roles.each do |role| %>
     <div class="grid-table-data">
       <div class="grid-table-data-cell">
         <%=
@@ -125,3 +128,5 @@
     %>
   </div>
 </div>
+
+

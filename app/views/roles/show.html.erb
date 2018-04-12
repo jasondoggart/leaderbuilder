@@ -1,0 +1,52 @@
+<div class="section-heading">
+  <%= @role.name %>
+</div>
+<div class="section-sub-heading">
+  <div class="action-items-grid">
+    <div class="action-item">
+      <div class="action-item-icon">
+      </div>
+      <%=
+        link_to 'Update',
+        edit_role_path(@role),
+        class: 'action-item-text pretty-link'
+      %>
+    </div>
+    <div class="action-item">
+      <div class="action-item-icon">
+      </div>
+      <%=
+        link_to 'Delete',
+        role_path(@role),
+        method: :delete,
+        class: 'action-item-text pretty-link'
+      %>
+    </div>
+  </div>
+</div>
+<div class="inline-form">
+  <div class="inline-form-label">
+    <div class="inline-form-label-icon">
+      <i class="fas fa-list-ul"></i>
+    </div>
+    <div class="inline-form-label-text">
+      Role Type
+    </div>
+  </div>
+  <div class="inline-form-text">
+    <%= @role.role_type %>
+  </div>
+  <div class="inline-form-label">
+    <div class="inline-form-label-icon">
+      <i class="far fa-user"></i>
+    </div>
+    <div class="inline-form-label-text">
+      Team Member
+    </div>
+  </div>
+  <div class="inline-form-text">
+    <%= @role.team_member.full_name %>
+  </div>
+</div>
+
+

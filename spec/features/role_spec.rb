@@ -32,4 +32,10 @@ describe 'Role' do
     expect(current_path).to eq(ministry_path(role.ministry))
     expect(page).to have_content('New name')
   end
+
+  it 'has a show page' do
+    role = FactoryBot.create(:role)
+    visit role_path(role)
+    expect(current_path).to eq(role_path(role))
+  end
 end

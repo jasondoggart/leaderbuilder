@@ -1,7 +1,7 @@
 class RolesController < ApplicationController
   before_action :set_users, only: [:new, :edit, :update]
   before_action :set_role_types, only: [:new, :create, :edit, :update]
-  before_action :set_role, only: [:edit, :update]
+  before_action :set_role, only: [:edit, :update, :show]
 
   def new
     @role = Role.new
@@ -31,6 +31,9 @@ class RolesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def show
   end
 
   protected

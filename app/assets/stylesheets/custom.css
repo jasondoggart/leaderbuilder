@@ -229,7 +229,6 @@ button:focus {
   align-items: center;
   font-size: 14px;
   border-bottom: 1px solid rgb(221, 225, 227);
-  padding-left: 10px;
   border-right: 1px solid rgb(243, 243, 243);
   height: 35px;
 }
@@ -240,6 +239,7 @@ button:focus {
 
  .grid-table-data-text {
   color: #424241;
+  padding-left: 10px;
 }
 
 .pretty-link {
@@ -308,3 +308,33 @@ button:focus {
   padding-top: 25px;
 }
 
+.statistics {
+  margin-left: 65px;
+  padding-top: 20px;
+  display: grid;
+  grid-template-columns: 250px 250px 250px;
+  grid-gap: 20px;
+}
+
+.statistics-item {
+  border: 1px solid rgb(221, 225, 227);
+  border-radius: 5px;
+  height: 100px;
+  width: 250px;
+  display: grid;
+  grid-template-rows: 60px 40px;
+  align-items: center;
+}
+
+.statistics-number {
+  font-size: 45px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.statistics-description {
+  font-size: 14px;
+  display: grid;
+  color: #a5a5a5;
+  text-align: center;
+}

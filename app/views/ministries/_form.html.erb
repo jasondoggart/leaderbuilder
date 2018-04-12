@@ -15,6 +15,14 @@
   <%= f.label :name, 'Ministry Name' %>
   <%= f.text_field :name %>
 
+  <%= f.label :director_id, 'Director' %>
+  <%=
+    f.collection_select :director_id,
+    @users,
+    :id,
+    :full_name
+  %>
+
   <%= f.submit @ministry.new_record? ? 'Add Ministry' : 'Update Ministry' %>
 
 <% end %>

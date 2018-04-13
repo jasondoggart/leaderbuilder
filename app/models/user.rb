@@ -11,4 +11,8 @@ class User < ApplicationRecord
   def full_name
     first_name + ' ' + last_name
   end
+
+  def number_of_roles
+    roles.count
+  end
 end

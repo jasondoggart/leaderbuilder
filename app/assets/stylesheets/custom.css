@@ -247,7 +247,7 @@ button:focus {
 
  .grid-table-data-text {
   color: #424241;
-  padding-left: 10px;
+  margin-left: 10px;
 }
 
 .pretty-link {

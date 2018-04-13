@@ -1,20 +1,58 @@
-<h1>Users</h1>
-<table>
-  <thead>
-    <tr>
-      <% @users.first.attributes.each do |name, value| %>
-        <th><%= name.humanize %></th>
-      <% end %>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <% user.attributes.each do |name, value| %>
-          <td><%= value %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+<div class="section-heading">
+  Team Members
+</div>
+<div class="section-sub-heading">
+  Select a team member to view and update
+</div>
+<div class="section-sub-heading">
+  <%= will_paginate @users %>
+</div>
+<div class="grid-table">
+  <div class="grid-table-header">
+    <div class="grid-table-header-cell">
+      <div class="grid-table-header-icon">
+        <i class="fas fa-address-card"></i>
+      </div>
+      <div class="grid-table-header-text">
+        Full Name
+      </div>
+    </div>
+    <div class="grid-table-header-cell">
+      <div class="grid-table-header-icon">
+        <i class="far fa-envelope"></i>
+      </div>
+      <div class="grid-table-header-text">
+        Email
+      </div>
+    </div>
+    <div class="grid-table-header-cell">
+      <div class="grid-table-header-icon">
+        <i class="fas fa-hashtag"></i>
+      </div>
+      <div class="grid-table-header-text">
+        Number of Roles
+      </div>
+    </div>
+  </div>
+  <% @users.each do |user| %>
+    <div class="grid-table-data">
+      <div class="grid-table-data-cell">
+        <%=
+          link_to user.full_name,
+          user_path(user),
+          class: 'grid-table-data-text pretty-link'
+        %>
+      </div>
+      <div class='grid-table-data-cell'>
+        <div class='grid-table-data-text'>
+          <%= user.email %>
+        </div>
+      </div>
+      <div class='grid-table-data-cell'>
+        <div class='grid-table-data-text'>
+          <%= user.number_of_roles %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

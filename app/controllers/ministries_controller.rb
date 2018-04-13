@@ -1,4 +1,5 @@
 class MinistriesController < ApplicationController
+  before_action :require_login
   before_action :set_ministry, only: [:show, :edit, :update]
   before_action :set_users, only: [:new, :edit, :create, :udpate]
 

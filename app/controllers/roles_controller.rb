@@ -1,4 +1,5 @@
 class RolesController < ApplicationController
+  before_action :require_login
   before_action :set_users, only: [:new, :edit, :update]
   before_action :set_role_types, only: [:new, :create, :edit, :update]
   before_action :set_role, only: [:edit, :update, :show]

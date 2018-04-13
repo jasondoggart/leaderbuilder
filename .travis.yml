@@ -1,6 +1,13 @@
 language: ruby
 rvm:
-  - 2.4.1
+- 2.4.1
 script:
-  - bundle exec rails db:migrate RAILS_ENV=test
-  - bundle exec rspec
+- bundle exec rails db:migrate RAILS_ENV=test
+- bundle exec rspec
+deploy:
+  provider: heroku
+  api_key:
+    secure: dYpkhbvKg4HUnAnDz3IaPBm40iJnT14pE+WBKlHejtIoRqrItvmdjQ99tHhjtV+Xo7/dmbyp/TZIq8OVwD1+hxsnqbmv9R12Le5zDiNMitswFbKSnFTKb8hKPIaNK34obzH37cLIYdTEf4J7KQft4K9vcW2n9VPeCNoBIReOlaCtJkMyc3FlLouOIOn428+C20BjE37dgdVKkMhrqJe+fxwffWbZP9fAeWcp7W3xXDlmq1Yx4gIPWpaytYKv2y/Tw90ILNnhAqUvmmuunvUVgzHZFOcRNCjMETOJ4GeAJHvfYphe3jGyRtV0ebvXE750ehCs8gyOC4SexsUE+8DAADR/iqBVY5jlBW2OUMcUhk0duvjnEBqcOE3MF4qLRJqnQCl021/vob03a+yR9Z9Upb7+QfzC3J6LsCaplfcHsrssxJBXgp3028K+RJ6PBuvd871bZ5Ng6Te7Y3JGf1QZVkO/7t92yKv0D6YuFYtHJGr8L5UMlCAzzxyT6KJ7uVW5NvmbNL2dO/5X3k1dgV6e6z8md4m6VLzXiEf3ofAQsbAQi3pGo4cDdGyNZdymYu6+R8WTXobbholhJ+QtJEFv8mK5M2P6+FBW9vVqUw/GlTTPN61x1PBypVRAL/m4CqsS8mFaBn0rWqpGxbQejXEjBrd7CbYvK/0tsK0cqAEVhRw=
+  app: boiling-inlet-40476
+  on:
+    repo: jasondoggart/leaderbuilder

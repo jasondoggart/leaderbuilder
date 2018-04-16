@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :ministries
   resources :roles
   resources :users, only: [:index, :show]
+  resources :apprentice_relationships
 end

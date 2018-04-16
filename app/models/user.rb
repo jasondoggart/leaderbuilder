@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :roles,
            class_name: 'Role',
            foreign_key: 'team_member_id'
+  has_many :apprentice_relationships, foreign_key: 'apprentice_id'
 
   def full_name
     first_name + ' ' + last_name

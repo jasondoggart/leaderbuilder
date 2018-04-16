@@ -183,7 +183,6 @@ button:focus {
 .grid-table-header {
   display: grid;
   grid-auto-flow: column;
-  grid-template-columns: repeat(autofit, 250px);
   grid-auto-columns: 250px;
   height: 35px;
   align-items: center;
@@ -225,7 +224,7 @@ button:focus {
 .grid-table-data {
   display: grid;
   grid-auto-flow: column;
-  grid-template-columns: repeat(2, 250px);
+  grid-auto-columns: 250px;
   height: 35px;
   align-items: center;
 }
@@ -233,7 +232,6 @@ button:focus {
 .grid-table-data-cell {
   display: grid;
   grid-template-columns: auto 1fr;
-  width: 250px;
   align-items: center;
   font-size: 14px;
   border-bottom: 1px solid rgb(221, 225, 227);

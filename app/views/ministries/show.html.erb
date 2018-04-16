@@ -95,6 +95,14 @@
         Team Member
       </div>
     </div>
+    <div class="grid-table-header-cell">
+      <div class="grid-table-header-icon">
+        <i class="fas fa-hands-helping"></i>
+      </div>
+      <div class="grid-table-header-text">
+        Apprentice
+      </div>
+    </div>
   </div>
   <% @roles.each do |role| %>
     <div class="grid-table-data">
@@ -113,6 +121,19 @@
       <div class="grid-table-data-cell">
         <div class="grid-table-data-text">
           <%= role.team_member.full_name %>
+        </div>
+      </div>
+      <div class="grid-table-data-cell">
+        <div class="grid-table-data-text">
+          <% if role.apprentice_relationships.any? %>
+            <% if role.apprentice_relationships.count == 1 %>
+              <%= role.apprentice_relationships.first.apprentice.full_name %>
+            <% else %>
+              <%= role.apprentice_relationships.count %> apprentices
+            <% end %>
+          <% else %>
+            None
+          <% end %>
         </div>
       </div>
     </div>

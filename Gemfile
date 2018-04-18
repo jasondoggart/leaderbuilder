@@ -17,6 +17,8 @@ gem 'clearance', '~> 1.16', '>= 1.16.1'
 gem 'faker', '~> 1.8', '>= 1.8.7'
 gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 gem 'bootsnap', require: false
+gem 'dotenv-rails', groups: [:development, :test]
+
 
 group :development, :test do
   gem 'sqlite3'

@@ -169,6 +169,7 @@ button:focus {
 
 .main {
   margin-left: 250px;
+  padding-bottom: 150px;
 }
 
 .grid-table {
@@ -342,5 +343,27 @@ button:focus {
   font-size: 14px;
   display: grid;
   color: #a5a5a5;
+  text-align: center;
+}
+
+.loading-spinner {
+  display: grid;
+  grid-auto-rows: auto;
+  align-items: center;
+  justify-content: center;
+  margin-left: 65px;
+  margin-right: 65px;
+}
+
+.spinner {
+  color: #A5A5A5;
+  font-size: 36px;
+  text-align: center;
+  padding-bottom: 15px;
+}
+
+.spinner-text {
+  color: #A5A5A5;
+  font-size: 20px;
   text-align: center;
 }

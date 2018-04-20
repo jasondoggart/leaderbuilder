@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   include Clearance::User
-  validates_presence_of :first_name, :last_name
+  validates_presence_of :first_name, :last_name, :pc_id
   has_many :ministries,
            class_name: 'Ministry',
            foreign_key: 'director_id'
@@ -16,4 +16,6 @@ class User < ApplicationRecord
   def number_of_roles
     roles.count
   end
+
+
 end

@@ -56,3 +56,31 @@
     </div>
   <% end %>
 </div>
+<div class="section-heading">
+  Add Team Members
+</div>
+<div class="section-sub-heading">
+  Enter a last name to search Planning Center
+</div>
+<%= form_tag search_people_path, remote: true do %>
+  <div class="inline-form" style="border:none;">
+    <div class="inline-form-label">
+      <div class="inline-form-label-icon">
+        <i class="fas fa-align-justify"></i>
+      </div>
+      <%=
+        label_tag :last_name,
+        'Last Name',
+        class: 'inline-form-label-text'
+      %>
+    </div>
+    <%=
+      text_field_tag :last_name,
+      nil,
+      class: 'inline-form-input'
+    %>
+    <%= submit_tag 'Search', class: 'form-submit-button', onclick: "showSpinner('#search-result')" %>
+  </div>
+<% end %>
+<div id="search-result">
+</div>

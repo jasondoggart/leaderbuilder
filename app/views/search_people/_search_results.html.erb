@@ -1,0 +1,69 @@
+<div class="grid-table">
+  <div class="grid-table-header">
+    <div class="grid-table-header-cell">
+      <div class="grid-table-header-icon">
+        <i class="far fa-user"></i>
+      </div>
+      <div class="grid-table-header-text">
+        Last Name
+      </div>
+    </div>
+    <div class="grid-table-header-cell">
+      <div class="grid-table-header-icon">
+        <i class="far fa-user"></i>
+      </div>
+      <div class="grid-table-header-text">
+        First Name
+      </div>
+    </div>
+    <div class="grid-table-header-cell">
+      <div class="grid-table-header-icon">
+        <i class="far fa-envelope"></i>
+      </div>
+      <div class="grid-table-header-text">
+        Email
+      </div>
+    </div>
+    <div class="grid-table-header-cell">
+      <div class="grid-table-header-icon">
+        <i class="fas fa-plus"></i>
+      </div>
+      <div class="grid-table-header-text">
+        Add Team Member
+      </div>
+    </div>
+  </div>
+  <% results.each do |name, value| %>
+    <div class="grid-table-data">
+      <div class="grid-table-data-cell">
+        <div class="grid-table-data-text">
+          <%= value[:last_name] %>
+        </div>
+      </div>
+      <div class="grid-table-data-cell">
+        <div class="grid-table-data-text">
+          <%= value[:first_name] %>
+        </div>
+      </div>
+      <div class="grid-table-data-cell">
+        <div class="grid-table-data-text">
+          <%= value[:email] %>
+        </div>
+      </div>
+      <div class="grid-table-data-cell">
+        <%= form_for @user, remote: true do |f| %>
+          <%= f.hidden_field :first_name, value: value[:first_name] %>
+          <%= f.hidden_field :last_name, value: value[:last_name] %>
+          <%= f.hidden_field :email, value: value[:email] %>
+          <%= f.hidden_field :pc_id, value: name %>
+          <%=
+            f.submit 'Add Team Member',
+            class: 'grid-table-data-text'
+          %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+

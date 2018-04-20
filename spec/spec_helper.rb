@@ -1,5 +1,34 @@
+require 'webmock/rspec'
+WebMock.disable_net_connect!(allow_localhost: true)
+
 
 RSpec.configure do |config|
+  config.before(:each) do
+    stub_request(:get, /https:\/\/api.planningcenteronline.com\/people\/v2\/people/).
+         with(  headers: {
+          'Accept'=>'*/*',
+          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'Host'=>'api.planningcenteronline.com',
+          'User-Agent'=>'Ruby'
+           }).
+         to_return(
+           status: 200,
+           body: File.read('spec/support/fixtures/people.json'),
+           headers: {}
+         )
+    stub_request(:get, /https:\/\/api.planningcenteronline.com\/people\/v2\/people\/\d+\/emails/).
+         with(  headers: {
+          'Accept'=>'*/*',
+          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'Host'=>'api.planningcenteronline.com',
+          'User-Agent'=>'Ruby'
+           }).
+         to_return(
+           status: 200,
+           body: File.read('spec/support/fixtures/emails.json'),
+           headers: {}
+         )
+  end
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.

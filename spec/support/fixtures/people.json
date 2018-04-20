@@ -1,0 +1,118 @@
+{
+    "links": {
+        "self": "https://api.planningcenteronline.com/people/v2/people?where[first_name]=Jason&where[last_name]=Doggart"
+    },
+    "data": [
+        {
+            "type": "Person",
+            "id": "3150149",
+            "attributes": {
+                "anniversary": "2006-07-14",
+                "avatar": "https://people.planningcenteronline.com/static/no_photo_thumbnail_man_gray.svg",
+                "birthdate": "1983-08-04",
+                "child": false,
+                "created_at": "2013-02-27T17:57:23Z",
+                "demographic_avatar_url": "https://people.planningcenteronline.com/static/no_photo_thumbnail_man_gray.svg",
+                "first_name": "Jason",
+                "gender": "M",
+                "given_name": null,
+                "grade": null,
+                "graduation_year": null,
+                "inactivated_at": null,
+                "last_name": "Test_Result",
+                "medical_notes": null,
+                "membership": "Member",
+                "middle_name": null,
+                "name": "Jason Doggart",
+                "nickname": null,
+                "people_permissions": "Viewer",
+                "remote_id": null,
+                "school_type": null,
+                "site_administrator": false,
+                "status": "active",
+                "updated_at": "2018-03-22T18:17:59Z"
+            },
+            "links": {
+                "self": "https://api.planningcenteronline.com/people/v2/people/3150149"
+            }
+        }
+    ],
+    "included": [],
+    "meta": {
+        "total_count": 1,
+        "count": 1,
+        "can_order_by": [
+            "given_name",
+            "first_name",
+            "nickname",
+            "middle_name",
+            "last_name",
+            "birthdate",
+            "anniversary",
+            "gender",
+            "grade",
+            "child",
+            "status",
+            "school_type",
+            "graduation_year",
+            "site_administrator",
+            "people_permissions",
+            "membership",
+            "inactivated_at",
+            "remote_id",
+            "medical_notes",
+            "created_at",
+            "updated_at"
+        ],
+        "can_query_by": [
+            "given_name",
+            "first_name",
+            "nickname",
+            "middle_name",
+            "last_name",
+            "birthdate",
+            "anniversary",
+            "gender",
+            "grade",
+            "child",
+            "status",
+            "school_type",
+            "graduation_year",
+            "site_administrator",
+            "people_permissions",
+            "membership",
+            "inactivated_at",
+            "remote_id",
+            "medical_notes",
+            "created_at",
+            "updated_at",
+            "search_name",
+            "search_name_or_email",
+            "id"
+        ],
+        "can_include": [
+            "addresses",
+            "emails",
+            "field_data",
+            "households",
+            "inactive_reason",
+            "marital_status",
+            "name_prefix",
+            "name_suffix",
+            "person_apps",
+            "phone_numbers",
+            "platform_notifications",
+            "school",
+            "social_profiles"
+        ],
+        "can_filter": [
+            "created_since",
+            "admins",
+            "organization_admins"
+        ],
+        "parent": {
+            "id": "101008",
+            "type": "Organization"
+        }
+    }
+}

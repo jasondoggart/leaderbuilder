@@ -19,5 +19,10 @@ RSpec.describe User, type: :model do
       @user.last_name = ''
       expect(@user).to_not be_valid
     end
+
+    it 'cannot be created without a planning center id' do
+      @user.pc_id = ''
+      expect(@user).to_not be_valid
+    end
   end
 end

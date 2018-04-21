@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.password = SecureRandom.base64(8)
+    @users = User.all
     if @user.save
       respond_to do |format|
         format.js

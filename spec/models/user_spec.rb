@@ -25,4 +25,19 @@ RSpec.describe User, type: :model do
       expect(@user).to_not be_valid
     end
   end
+
+  describe 'order' do
+    it 'users created last should appear first in order' do
+      user1 = User.create(first_name: 'Test', last_name: 'User',
+                          email: 'test1@test.com', pc_id: 1,
+                          password: 'password', created_at: 3.day.ago)
+      user2 = User.create(first_name: 'Test', last_name: 'User',
+                          email: 'test2@test.com', pc_id: 2,
+                          password: 'password', created_at: 2.day.ago)
+      user3 = User.create(first_name: 'Test', last_name: 'User',
+                          email: 'test3@test.com', pc_id: 3,
+                          password: 'password', created_at: 1.day.ago)
+      expect(User.first).to eq(user3)
+    end
+  end
 end

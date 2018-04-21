@@ -1,0 +1,21 @@
+<% users.each do |user| %>
+  <div class="grid-table-data">
+    <div class="grid-table-data-cell">
+      <%=
+        link_to user.full_name,
+          user_path(user),
+          class: 'grid-table-data-text pretty-link'
+        %>
+    </div>
+    <div class='grid-table-data-cell'>
+      <div class='grid-table-data-text'>
+        <%= user.email %>
+      </div>
+    </div>
+    <div class='grid-table-data-cell'>
+      <div class='grid-table-data-text'>
+        <%= user.number_of_roles %>
+      </div>
+    </div>
+  </div>
+<% end %>

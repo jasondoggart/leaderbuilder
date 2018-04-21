@@ -1,2 +1,4 @@
 document.querySelector("#search-result").
   innerHTML = "<%= j render partial: 'shared/user_added', locals: { user: @user } %>";
+document.querySelector("#users-index").
+  innerHTML = "<%= j render partial: 'users/users_index', locals: { users: @users } %>";

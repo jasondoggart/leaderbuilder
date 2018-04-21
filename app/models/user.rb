@@ -9,6 +9,8 @@ class User < ApplicationRecord
            foreign_key: 'team_member_id'
   has_many :apprentice_relationships, foreign_key: 'apprentice_id'
 
+  default_scope { order( created_at: :desc) }
+
   def full_name
     first_name + ' ' + last_name
   end

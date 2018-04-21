@@ -19,6 +19,7 @@ describe 'Creation', js: true do
   it 'can be added from Planning Center' do
     before_count = User.count
     user1 = FactoryBot.create(:user)
+    before_count = User.count
     sign_in_with(user1.email, user1.password)
     visit users_path
     fill_in('last_name', with: 'Doggart')

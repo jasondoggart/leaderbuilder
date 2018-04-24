@@ -5,7 +5,7 @@
   Enter a last name to search Planning Center
 </div>
 <%= form_tag search_people_path, remote: true do %>
-  <div class="inline-form" style="border:none;">
+  <div class="inline-form-new-user" style="border:none;">
     <div class="inline-form-label">
       <div class="inline-form-label-icon">
         <i class="far fa-user"></i>
@@ -64,6 +64,6 @@
   </div>
   <div id="users-index">
     <%= render partial: 'users_index',
-    locals: { users: @users } %>
+      locals: { users: @users } %>
   </div>
 </div>

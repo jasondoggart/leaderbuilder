@@ -4,94 +4,111 @@ User.create(
   first_name: 'Jason',
   last_name: 'Doggart',
   email: 'jasondoggart@gmail.com',
-  password: 'password'
+  password: 'password',
+  pc_id: '3150149'
 )
+
+puts "Added user #{User.last.first_name}"
 
 User.create(
   first_name: 'Kevin',
   last_name: 'Shepherd',
   email: 'kshepherd@gtburlington.org',
-  password: 'password'
+  password: 'password',
+  pc_id: '3150191'
+
 )
+puts "Added user #{User.last.first_name}"
 
 User.create(
   first_name: 'Jeremy',
   last_name: 'Bates',
   email: 'jbates@gtburlington.org',
-  password: 'password'
+  password: 'password',
+  pc_id: '5946488'
+
 )
+puts "Added user #{User.last.first_name}"
 
 User.create(
   first_name: 'Kelvin',
   last_name: 'Honsinger',
   email: 'khonsinger@gtburlington.org',
-  password: 'password'
+  password: 'password',
+  pc_id: '24225333'
+
 )
+puts "Added user #{User.last.first_name}"
 
 User.create(
   first_name: 'Jenni',
   last_name: 'Colwell',
   email: 'jcolwell@gtburlington.org',
-  password: 'password'
+  password: 'password',
+  pc_id: '9624177'
+
 )
+puts "Added user #{User.last.first_name}"
 
 User.create(
   first_name: 'Cheryl',
   last_name: 'Neal',
   email: 'cneal@gtburlington.org',
-  password: 'password'
+  password: 'password',
+  pc_id: '9638516'
+
 )
+puts "Added user #{User.last.first_name}"
 
 User.create(
   first_name: 'Rick',
   last_name: 'Zuidersma',
   email: 'rzuidersma@gtburlington.org',
-  password: 'password'
+  password: 'password',
+  pc_id: '5608128'
+
 )
+puts "Added user #{User.last.first_name}"
 
 User.create(
   first_name: 'Holly',
   last_name: 'Bates',
   email: 'hbates@gtburlington.org',
-  password: 'password'
+  password: 'password',
+  pc_id: '5608146'
+
 )
+puts "Added user #{User.last.first_name}"
 
 User.create(
   first_name: 'Salem',
   last_name: 'Faraj',
   email: 'sfaraj@gtburlington.org',
-  password: 'password'
+  password: 'password',
+  pc_id: '11389973'
+
 )
+puts "Added user #{User.last.first_name}"
 
 User.create(
   first_name: 'Steve',
   last_name: 'Swartwood',
   email: 'sswartwood@gtburlington.org',
-  password: 'password'
+  password: 'password',
+  pc_id: '6758408'
+
 )
+puts "Added user #{User.last.first_name}"
 
 User.create(
   first_name: 'Isaias',
   last_name: 'Zarazua',
   email: 'izarazua@gtburlington.org',
-  password: 'password'
+  password: 'password',
+  pc_id: '26257127'
+
 )
-
-500.times do |n|
-  first_name = Faker::Name.first_name
-  last_name = Faker::Name.last_name
-  email = first_name.downcase + last_name.downcase + '@example.com'
-  password = 'password'
-  User.create(
-    first_name: first_name,
-    last_name: last_name,
-    email: email,
-    password: password
-  )
-end
-
-puts "Create #{User.count} Users"
-
+puts "Added user #{User.last.first_name}"
 
 # Create ministries
 
@@ -135,24 +152,4 @@ Ministry.create(
   director: User.find_by(email: 'izarazua@gtburlington.org')
 )
 
-# Create roles
 
-Ministry.all.each do |ministry|
-  # Create 30 ministry leaders
-  30.times do
-    ministry.roles.create(
-      name: "#{ministry.name} leader",
-      role_type: "Ministry Leader",
-      team_member: User.find(rand(1..User.count))
-    )
-  end
-
-  # Create 6 coaches
-  6.times do
-    ministry.roles.create(
-      name: "#{ministry.name} coach",
-      role_type: "Coach",
-      team_member: User.find(rand(1..User.count))
-    )
-  end
-end

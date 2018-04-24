@@ -173,8 +173,13 @@ button:focus {
 }
 
 .main {
-  margin-left: 250px;
   padding-bottom: 150px;
+  height: auto;
+  width: 100%;
+  position: fixed;
+  top: 0px;
+  left: 250px;
+  overflow-y: scroll;
 }
 
 .grid-table {
@@ -379,4 +384,9 @@ button:focus {
 
 .search-result {
   display: block
+}
+
+.disabled {
+  color: #A5A5A5;
+  font-weight: 200;
 }

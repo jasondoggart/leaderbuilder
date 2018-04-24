@@ -51,15 +51,25 @@
         </div>
       </div>
       <div class="grid-table-data-cell">
-        <%= form_for @user, remote: true do |f| %>
-          <%= f.hidden_field :first_name, value: value[:first_name] %>
-          <%= f.hidden_field :last_name, value: value[:last_name] %>
-          <%= f.hidden_field :email, value: value[:email] %>
-          <%= f.hidden_field :pc_id, value: name %>
-          <%=
-            f.submit 'Add Team Member',
-            class: 'grid-table-data-text top-level'
-          %>
+        <% if person_has_been_added name.to_s %>
+          <div class="grid-table-data-text disabled">
+            Already added
+          </div>
+        <% elsif value[:email] == nil %>
+          <div class="grid-table-data-text disabled">
+            Require email to add
+          </div>
+        <% else %>
+          <%= form_for @user, remote: true do |f| %>
+            <%= f.hidden_field :first_name, value: value[:first_name] %>
+            <%= f.hidden_field :last_name, value: value[:last_name] %>
+            <%= f.hidden_field :email, value: value[:email] %>
+            <%= f.hidden_field :pc_id, value: name %>
+            <%=
+              f.submit 'Add Team Member',
+              class: 'grid-table-data-text top-level'
+            %>
+          <% end %>
         <% end %>
       </div>
     </div>

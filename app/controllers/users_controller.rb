@@ -9,7 +9,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @roles = @user.roles
     @apprenticeships = @user.apprenticeships
-    @apprentices = @user.roles.joins(:apprentices).group("role_id")
   end
 
   def create

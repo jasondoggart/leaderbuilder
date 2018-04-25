@@ -1,13 +1,41 @@
 <div class="section-heading">
+  Add Team Members
+</div>
+<div class="section-sub-heading">
+  Enter a last name to search Planning Center
+</div>
+<%= form_tag search_people_path, remote: true do %>
+  <div class="inline-form-new-user" style="border:none;">
+    <div class="inline-form-label">
+      <div class="inline-form-label-icon">
+        <i class="far fa-user"></i>
+      </div>
+      <%=
+        label_tag :last_name,
+        'Last Name',
+        class: 'inline-form-label-text'
+      %>
+    </div>
+    <%=
+      text_field_tag :last_name,
+      nil,
+      class: 'inline-form-input'
+    %>
+    <%= submit_tag 'Search', class: 'form-submit-button inline-submit', onclick: "showSpinner('#search-result')" %>
+  </div>
+<% end %>
+<div id="search-result" class="search-result">
+</div>
+<div class="section-heading" style="display: block;">
   Team Members
 </div>
-<div class="section-sub-heading">
+<div class="section-sub-heading style="display: block;"">
   Select a team member to view and update
 </div>
-<div class="section-sub-heading">
+<div class="section-sub-heading style="display: block;"">
   <%= will_paginate @users %>
 </div>
-<div class="grid-table">
+<div class="grid-table style="display: block;"">
   <div class="grid-table-header">
     <div class="grid-table-header-cell">
       <div class="grid-table-header-icon">
@@ -34,25 +62,8 @@
       </div>
     </div>
   </div>
-  <% @users.each do |user| %>
-    <div class="grid-table-data">
-      <div class="grid-table-data-cell">
-        <%=
-          link_to user.full_name,
-          user_path(user),
-          class: 'grid-table-data-text pretty-link'
-        %>
-      </div>
-      <div class='grid-table-data-cell'>
-        <div class='grid-table-data-text'>
-          <%= user.email %>
-        </div>
-      </div>
-      <div class='grid-table-data-cell'>
-        <div class='grid-table-data-text'>
-          <%= user.number_of_roles %>
-        </div>
-      </div>
-    </div>
-  <% end %>
+  <div id="users-index">
+    <%= render partial: 'users_index',
+      locals: { users: @users } %>
+  </div>
 </div>

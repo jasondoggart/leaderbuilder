@@ -7,10 +7,15 @@ FactoryBot.define do
     "User-#{n}"
   end
 
+  sequence :pc_id do |n|
+    n
+  end
+
   factory :user do
     email
     password "password"
     first_name
     last_name 'User'
+    pc_id
   end
 end

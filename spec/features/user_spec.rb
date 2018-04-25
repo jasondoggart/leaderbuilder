@@ -31,3 +31,45 @@ describe 'Creation', js: true do
   end
 end
 
+describe 'Show' do
+  before do
+    @user = FactoryBot.create(:user)
+    @ministry = FactoryBot.create(:ministry)
+    @role = Role.create(name: "Role",
+                       role_type: "Coach",
+                       team_member: @user,
+                       ministry: @ministry)
+    @role2 = Role.create(name: "Role 2",
+                       role_type: "Coach",
+                       team_member: FactoryBot.create(:user),
+                       ministry: @ministry)
+
+    sign_in_with(@user.email, @user.password)
+    visit user_path(@user)
+  end
+
+  it 'shows the users full name on the show template' do
+    expect(page).to have_content(@user.full_name)
+  end
+
+  it 'shows the users roles' do
+    expect(page).to have_content(@role.name)
+  end
+
+  it 'shows where the user is apprenticing' do
+    ApprenticeRelationship.create(role: @role2,
+                                                            apprentice: @user)
+
+    visit user_path(@user)
+    expect(page).to have_content(@role2.name)
+  end
+
+  it 'shows who the user is apprenticing' do
+    @user2 = FactoryBot.create(:user)
+    ApprenticeRelationship.create(role: @role,
+                                                            apprentice: @user2)
+    visit user_path(@user)
+    expect(page).to have_content(@user2.full_name)
+  end
+end
+

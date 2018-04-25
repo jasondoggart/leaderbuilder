@@ -25,6 +25,6 @@ describe 'Apprentice' do
     expect(ApprenticeRelationship.count).to eq(before_count + 1)
     expect(page).to have_content(@apprentice.full_name)
     expect(@role.apprentice_relationships.count).to eq(1)
-    expect(@apprentice.apprentice_relationships.count).to eq(1)
+    expect(@apprentice.apprenticeships.count).to eq(1)
   end
 end

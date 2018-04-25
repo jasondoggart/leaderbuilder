@@ -64,7 +64,7 @@
             <%= f.hidden_field :first_name, value: value[:first_name] %>
             <%= f.hidden_field :last_name, value: value[:last_name] %>
             <%= f.hidden_field :email, value: value[:email] %>
-            <%= f.hidden_field :pc_id, value: name %>
+            <%= f.hidden_field :pc_id, value: name.to_s.to_i %>
             <%=
               f.submit 'Add Team Member',
               class: 'grid-table-data-text top-level'

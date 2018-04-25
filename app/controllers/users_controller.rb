@@ -7,7 +7,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @roles = @user.roles.paginate(:page => params[:page], :per_page => 15)
+    @roles = @user.roles
+    @apprenticeships = @user.apprenticeships
+    @apprentices = @user.roles.joins(:apprentices).group("role_id")
   end
 
   def create

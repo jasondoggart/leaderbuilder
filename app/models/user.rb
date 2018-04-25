@@ -7,7 +7,10 @@ class User < ApplicationRecord
   has_many :roles,
            class_name: 'Role',
            foreign_key: 'team_member_id'
-  has_many :apprentice_relationships, foreign_key: 'apprentice_id'
+  has_many :apprentices, through: :roles
+  has_many :apprenticeships,
+           class_name: 'ApprenticeRelationship',
+           foreign_key: 'apprentice_id'
 
   default_scope { order( created_at: :desc) }
 

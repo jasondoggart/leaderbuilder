@@ -32,9 +32,6 @@
     Roles
   </div>
 </div>
-<div class="section-sub-heading">
-  <%= will_paginate @roles %>
-</div>
 <div class="grid-table">
   <div class="grid-table-header">
     <div class="grid-table-header-cell">
@@ -85,4 +82,150 @@
   <% end %>
 </div>
 
+<div class="sub-section-title">
+  <div class="sub-section-icon">
+    <i class="fas fa-graduation-cap"></i>
+  </div>
+  <div class="item-sub-heading-text">
+    Is mentored by
+  </div>
+</div>
+<div class="grid-table">
+  <div class="grid-table-header">
+    <div class="grid-table-header-cell">
+      <div class="grid-table-header-icon">
+        <i class="fas fa-user"></i>
+      </div>
+      <div class="grid-table-header-text">
+        Name
+      </div>
+    </div>
+    <div class="grid-table-header-cell">
+      <div class="grid-table-header-icon">
+        <i class="fas fa-align-justify"></i>
+      </div>
+      <div class="grid-table-header-text">
+        Role Name
+      </div>
+    </div>
+    <div class="grid-table-header-cell">
+      <div class="grid-table-header-icon">
+        <i class="fas fa-list-ul"></i>
+      </div>
+      <div class="grid-table-header-text">
+        Role Type
+      </div>
+    </div>
+    <div class="grid-table-header-cell">
+      <div class="grid-table-header-icon">
+        <i class="fas fa-hand-holding-heart"></i>
+      </div>
+      <div class="grid-table-header-text">
+        Ministry
+      </div>
+    </div>
+  </div>
+  <% @apprenticeships.each do |relationship| %>
+    <div class="grid-table-data">
+      <div class="grid-table-data-cell">
+        <%=
+          link_to relationship.role.team_member.full_name,
+          user_path(relationship.role.team_member),
+          class: 'grid-table-data-text pretty-link'
+        %>
+      </div>
+      <div class="grid-table-data-cell">
+        <%=
+          link_to relationship.role.name,
+          role_path(relationship.role),
+          class: 'grid-table-data-text pretty-link'
+        %>
+      </div>
+      <div class="grid-table-data-cell">
+        <div class="grid-table-data-text">
+          <%= relationship.role.role_type %>
+        </div>
+      </div>
+      <div class="grid-table-data-cell">
+        <div class="grid-table-data-text">
+          <%= relationship.role.ministry.name %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 
+<div class="sub-section-title">
+  <div class="sub-section-icon">
+    <i class="fas fa-hands-helping"></i>
+  </div>
+  <div class="item-sub-heading-text">
+    Is mentoring
+  </div>
+</div>
+<div class="grid-table">
+  <div class="grid-table-header">
+    <div class="grid-table-header-cell">
+      <div class="grid-table-header-icon">
+        <i class="fas fa-user"></i>
+      </div>
+      <div class="grid-table-header-text">
+        Name
+      </div>
+    </div>
+    <div class="grid-table-header-cell">
+      <div class="grid-table-header-icon">
+        <i class="fas fa-align-justify"></i>
+      </div>
+      <div class="grid-table-header-text">
+        Role Name
+      </div>
+    </div>
+    <div class="grid-table-header-cell">
+      <div class="grid-table-header-icon">
+        <i class="fas fa-list-ul"></i>
+      </div>
+      <div class="grid-table-header-text">
+        Role Type
+      </div>
+    </div>
+    <div class="grid-table-header-cell">
+      <div class="grid-table-header-icon">
+        <i class="fas fa-hand-holding-heart"></i>
+      </div>
+      <div class="grid-table-header-text">
+        Ministry
+      </div>
+    </div>
+  </div>
+  <% @apprentices.each do |role| %>
+    <% role.apprentices.each do |apprentice| %>
+      <div class="grid-table-data">
+        <div class="grid-table-data-cell">
+          <%=
+            link_to apprentice.full_name,
+              user_path(apprentice),
+              class: 'grid-table-data-text pretty-link'
+            %>
+        </div>
+        <div class="grid-table-data-cell">
+          <%=
+            link_to role.name,
+              role_path(role),
+              class: 'grid-table-data-text pretty-link'
+            %>
+        </div>
+        <div class="grid-table-data-cell">
+          <div class="grid-table-data-text">
+            <%= role.role_type %>
+          </div>
+        </div>
+        <div class="grid-table-data-cell">
+          <div class="grid-table-data-text">
+            <%= role.ministry.name %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

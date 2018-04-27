@@ -1,3 +1,15 @@
+<div class="breadcrumbs">
+  <%=
+    link_to 'Ministries',
+    ministries_path
+  %> /
+  <%=
+    link_to @role.ministry.name,
+    ministry_path(@role.ministry)
+  %> /
+  Roles /
+  <%= @role.name %>
+</div>
 <div class="section-heading">
   <%= @role.name %>
 </div>

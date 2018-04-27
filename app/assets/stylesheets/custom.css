@@ -404,3 +404,16 @@ button:focus {
   color: #A5A5A5;
   font-weight: 200;
 }
+
+.breadcrumbs {
+  margin-left: 65px;
+  margin-top: 15px;
+  color: #a5a5a5;
+  margin-bottom: -15px;
+  font-size: 14px;
+}
+
+.breadcrumbs a {
+  text-decoration: none;
+  color: #a5a5a5;
+}

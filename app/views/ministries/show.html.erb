@@ -38,7 +38,7 @@
       <%= @ministry.number_of_coaches %>
     </div>
     <div class="statistics-description">
-      Coaches
+      <%= 'Coach'.pluralize(@ministry.number_of_coaches) %>
     </div>
   </div>
   <div class="statistics-item">
@@ -46,7 +46,7 @@
       <%= @ministry.number_of_leaders %>
     </div>
     <div class="statistics-description">
-      Ministry Leaders
+      <%= 'Team Leader'.pluralize(@ministry.number_of_leaders) %>
     </div>
   </div>
   <div class="statistics-item">
@@ -54,7 +54,25 @@
       <%= @ministry.number_of_members %>
     </div>
     <div class="statistics-description">
-      Team Members
+      <%= 'Team Member'.pluralize(@ministry.number_of_members) %>
+    </div>
+  </div>
+</div>
+<div class="statistics">
+  <div class="statistics-item">
+    <div class="statistics-number">
+      <%= @ministry.percent_having_apprentice('Coach') %>%
+    </div>
+    <div class="statistics-description">
+      of coaches have an apprentice
+    </div>
+  </div>
+  <div class="statistics-item">
+    <div class="statistics-number">
+      <%= @ministry.percent_having_apprentice('Team Leader') %>%
+    </div>
+    <div class="statistics-description">
+      of team leaders have an apprentice
     </div>
   </div>
 </div>

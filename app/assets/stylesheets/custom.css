@@ -43,7 +43,6 @@ a:active {color:#424242;}  /* selected link */
   font-size: 14px;
   line-height: 16.8px;
   padding-bottom: 25px;
-  border-bottom: 1px solid rgb(242, 242, 242);
 }
 
 .inline-form-new-user {
@@ -187,13 +186,13 @@ button:focus {
 
 .main {
   padding-bottom: 150px;
-  height: auto;
   width: 100%;
-  position: fixed;
+  position: relative;
   top: 0px;
   left: 250px;
   overflow-y: scroll;
   overflow-x: scroll;
+  padding-bottom: 75px;
 }
 
 .grid-table {

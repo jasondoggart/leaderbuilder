@@ -1,3 +1,19 @@
+<div class="breadcrumbs">
+  <%=
+    link_to 'Ministries',
+    ministries_path
+  %> /
+  <%=
+    link_to @leading_role.ministry.name,
+    ministry_path(@leading_role.ministry)
+  %> /
+  Roles /
+  <%=
+    link_to @leading_role.name,
+    role_path(@leading_role)
+  %> /
+  Link New <%= role_relationship_following_role_type(@leading_role.role_type) %>
+</div>
 <div class="section-heading">
   Link a new <%= role_relationship_following_role_type(@leading_role.role_type) %>
 </div>

@@ -1,3 +1,14 @@
+<div class="breadcrumbs">
+  <%=
+    link_to 'Ministries',
+    ministries_path
+  %> /
+  <%=
+    link_to @ministry.name,
+    '#'
+  %>
+</div>
+
 <div class="section-heading">
   <%= @ministry.name %>
 </div>

@@ -1,3 +1,15 @@
+<div class="breadcrumbs">
+  <%=
+    link_to 'Ministries',
+    ministries_path
+  %> /
+  <%=
+    link_to @ministry.name,
+    ministry_path(@ministry)
+  %> /
+  New Ministry
+
+</div>
 <div class="section-heading">
   Create New Role
 </div>

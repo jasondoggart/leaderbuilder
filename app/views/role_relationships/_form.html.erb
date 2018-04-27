@@ -1,0 +1,40 @@
+<%= form_for @role_relationship do |f| %>
+  <% if @role_relationship.errors.any? %>
+    <div class="form-errors">
+      This couldn't be completed because there are
+      <%= pluralize(@role_relationship.errors.count, 'errors') %>.
+      Please update the form and try again.
+    </div>
+    <ul>
+      <% @role_relationship.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <div class="inline-form">
+    <div class="inline-form-label">
+      <div class="inline-form-label-icon">
+        <i class="far fa-user"></i>
+      </div>
+      <%=
+        f.label :following_role_id,
+          "Select #{role_relationship_following_role_type(@leading_role.role_type)}",
+        class: 'inline-form-label-text'
+      %>
+    </div>
+    <%=
+      f.collection_select :following_role_id,
+      @followers,
+      :id,
+      :role_details,
+      {},
+      {class: 'inline-form-input'}
+    %>
+    <%=
+      f.hidden_field :leading_role_id, value: @leading_role.id
+    %>
+    <%= f.submit @role_relationship.new_record? ? 'Link Role' : 'Update Link',
+      class: 'form-submit-button' %>
+  </div>
+<% end %>
+

@@ -55,6 +55,17 @@
   <div class="inline-form-text">
     <%= @role.team_member.full_name %>
   </div>
+  <div class="inline-form-label">
+    <div class="inline-form-label-icon">
+      <i class="far fa-user"></i>
+    </div>
+    <div class="inline-form-label-text">
+      <%= role_relationship_leading_role_type(@role.role_type) %>
+    </div>
+  </div>
+  <div class="inline-form-text">
+    <%= show_leading_role(@role) %>
+  </div>
 </div>
 <div class="sub-section-title">
   <div class="sub-section-icon">
@@ -123,3 +134,95 @@
 <% end %>
 
 
+<% if @role.role_type != 'Team Member' %>
+  <div class="sub-section-title">
+    <div class="sub-section-icon">
+      <i class="fas fa-sitemap"></i>
+    </div>
+    <div class="item-sub-heading-text">
+      <%= role_relationship_following_role_type(@role.role_type).pluralize(2) %>
+    </div>
+  </div>
+
+  <div class="grid-table">
+    <div class="grid-table-header">
+      <div class="grid-table-header-cell">
+        <div class="grid-table-header-icon">
+          <i class="fas fa-align-justify"></i>
+        </div>
+        <div class="grid-table-header-text">
+          Role Name
+        </div>
+      </div>
+      <div class="grid-table-header-cell">
+        <div class="grid-table-header-icon">
+          <i class="fas fa-list-ul"></i>
+        </div>
+        <div class="grid-table-header-text">
+          Role Type
+        </div>
+      </div>
+      <div class="grid-table-header-cell">
+        <div class="grid-table-header-icon">
+          <i class="far fa-user"></i>
+        </div>
+        <div class="grid-table-header-text">
+          Team Member
+        </div>
+      </div>
+      <div class="grid-table-header-cell">
+        <div class="grid-table-header-icon">
+          <i class="fas fa-hands-helping"></i>
+        </div>
+        <div class="grid-table-header-text">
+          Apprentice
+        </div>
+      </div>
+    </div>
+    <% @followers.each do |role| %>
+      <div class="grid-table-data">
+        <div class="grid-table-data-cell">
+          <%=
+            link_to role.name,
+              role_path(role),
+              class: 'grid-table-data-text pretty-link'
+            %>
+        </div>
+        <div class="grid-table-data-cell">
+          <div class="grid-table-data-text">
+            <%= role.role_type %>
+          </div>
+        </div>
+        <div class="grid-table-data-cell">
+          <div class="grid-table-data-text">
+            <%= role.team_member.full_name %>
+          </div>
+        </div>
+        <div class="grid-table-data-cell">
+          <div class="grid-table-data-text">
+            <% if role.apprentice_relationships.any? %>
+              <% if role.apprentice_relationships.count == 1 %>
+                <%= role.apprentice_relationships.first.apprentice.full_name %>
+              <% else %>
+                <%= role.apprentice_relationships.count %> apprentices
+              <% end %>
+            <% else %>
+              None
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <div class="grid-table-last-row">
+      <div class="grid-table-last-row-icon">
+        <i class="fas fa-plus"></i>
+      </div>
+      <%=
+        link_to 'Link a role',
+          new_role_relationship_path(:leading_role => @role),
+          class: 'grid-table-last-row-text pretty-link'
+        %>
+    </div>
+  </div>
+
+<% end %>

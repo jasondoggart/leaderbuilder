@@ -35,6 +35,7 @@ class RolesController < ApplicationController
   end
 
   def show
+    @followers = @role.followers
   end
 
   protected
@@ -44,7 +45,7 @@ class RolesController < ApplicationController
   end
 
   def set_role_types
-    @role_types = ['Coach', 'Ministry Leader', 'Team Member']
+    @role_types = ['Coach', 'Team Leader', 'Team Member']
   end
 
   def role_params

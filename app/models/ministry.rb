@@ -4,10 +4,14 @@ class Ministry < ApplicationRecord
   has_many :roles
 
   def number_of_coaches
-    self.roles.where(role_type: 'Coach').count
+    roles.where(role_type: 'Coach').count
   end
 
   def number_of_leaders
-    self.roles.where(role_type: 'Ministry Leader').count
+    roles.where(role_type: 'Team Leader').count
+  end
+
+  def number_of_members
+    roles.where(role_type: 'Team Member').count
   end
 end

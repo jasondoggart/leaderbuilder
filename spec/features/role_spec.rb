@@ -38,4 +38,18 @@ describe 'Role' do
     visit role_path(role)
     expect(current_path).to eq(role_path(role))
   end
+
+  it 'shows the coach if the role_type is Team Leader' do
+    leader_role = FactoryBot.create(:role,
+                                    ministry: @ministry,
+                                    role_type: 'Team Leader')
+    coach_role = FactoryBot.create(:role,
+                                   ministry: @ministry,
+                                   role_type: 'Coach')
+    RoleRelationship.create(following_role: leader_role, leading_role: coach_role)
+    visit role_path(leader_role)
+    expect(page).to have_content('Coach')
+    expect(page).to have_content(coach_role.team_member.full_name + " - " + coach_role.name)
+
+  end
 end

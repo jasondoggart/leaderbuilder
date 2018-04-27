@@ -11,6 +11,9 @@ class User < ApplicationRecord
   has_many :apprenticeships,
            class_name: 'ApprenticeRelationship',
            foreign_key: 'apprentice_id'
+  has_many :leaders,
+           class_name: 'RoleRelationship',
+           foreign_key: 'team_member_id'
 
   default_scope { order( created_at: :desc) }
 

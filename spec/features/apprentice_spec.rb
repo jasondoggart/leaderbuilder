@@ -7,7 +7,7 @@ describe 'Apprentice' do
     @ministry = Ministry.create(name: 'Ministry', director: @director)
     @leader = FactoryBot.create(:user)
     @role = Role.create(name: 'Test Role',
-                        role_type: 'Ministry Leader',
+                        role_type: 'Team Leader',
                         team_member: @leader,
                         ministry: @ministry)
     @apprentice = FactoryBot.create(:user)

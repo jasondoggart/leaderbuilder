@@ -29,7 +29,7 @@ describe 'Role' do
     visit edit_role_path(role)
     fill_in('Name', with: 'New name')
     click_on('Update Role')
-    expect(current_path).to eq(ministry_path(role.ministry))
+    expect(current_path).to eq(role_path(role))
     expect(page).to have_content('New name')
   end
 
@@ -51,5 +51,60 @@ describe 'Role' do
     expect(page).to have_content('Coach')
     expect(page).to have_content(coach_role.team_member.full_name + " - " + coach_role.name)
 
+  end
+
+  it 'has an update role page' do
+    role = FactoryBot.create(:role)
+    visit role_path(role)
+    click_on('update_role_link')
+    expect(current_path).to eq(update_role_path)
+  end
+
+  it 'can delete a role if it was added by mistake' do
+    role = FactoryBot.create(:role)
+    ministry = role.ministry
+    before_count = Role.count
+    visit update_role_path(:role => role)
+    click_on('delete_mistakenly_added')
+    expect(Role.count).to eq(before_count - 1)
+    expect(current_path).to eq(ministry_path(ministry))
+  end
+
+  it 'removes all role relationships when deleted' do
+    leading_role = FactoryBot.create(:role, role_type: 'Coach')
+    following_role = FactoryBot.create(:role, role_type: 'Team Leader')
+    RoleRelationship.create(leading_role: leading_role, following_role: following_role)
+    visit update_role_path(:role => leading_role)
+    click_on('delete_mistakenly_added')
+    expect(RoleRelationship.count).to eq(0)
+  end
+
+  it 'sets the role active status to false if the role is not longer active' do
+    role = FactoryBot.create(:role)
+    ministry = role.ministry
+    visit update_role_path(:role => role)
+    click_on('set_role_to_inactive')
+    expect(role.reload.active).to eq(false)
+    expect(current_path).to eq(ministry_path(ministry))
+  end
+
+  it 'removes all role relationships when role active status is changed to false' do
+    leading_role = FactoryBot.create(:role, role_type: 'Coach')
+    following_role = FactoryBot.create(:role, role_type: 'Team Leader')
+    RoleRelationship.create(leading_role: leading_role, following_role: following_role)
+    visit update_role_path(:role => leading_role)
+    click_on('set_role_to_inactive')
+    expect(leading_role.following_relationships.count).to eq(0)
+  end
+
+  it 'can have its title edited' do
+    role = FactoryBot.create(:role)
+    visit update_role_path(role: role)
+    click_on('edit_role_title')
+    expect(current_path).to eq(edit_role_path(role))
+    fill_in('Role Name', with: 'New title')
+    click_on('Update Role')
+    expect(current_path).to eq(role_path(role))
+    expect(role.reload.name).to eq('New title')
   end
 end

@@ -4,15 +4,15 @@ class Ministry < ApplicationRecord
   has_many :roles
 
   def number_of_coaches
-    roles.where(role_type: 'Coach').count
+    roles.where(role_type: 'Coach', active: true).count
   end
 
   def number_of_leaders
-    roles.where(role_type: 'Team Leader').count
+    roles.where(role_type: 'Team Leader', active: true).count
   end
 
   def number_of_members
-    roles.where(role_type: 'Team Member').count
+    roles.where(role_type: 'Team Member', active: true).count
   end
 
   def percent_having_apprentice(role_type)

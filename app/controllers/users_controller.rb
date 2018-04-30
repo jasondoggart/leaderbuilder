@@ -7,7 +7,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @roles = @user.roles
+    @active_roles = @user.roles.where(active: true)
+    @inactive_roles = @user.roles.where(active: false)
     @apprenticeships = @user.apprenticeships
   end
 

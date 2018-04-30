@@ -30,6 +30,8 @@ a:active {color:#424242;}  /* selected link */
   font-weight: 400;
   margin-bottom: 10px;
   margin-left: 65px;
+  margin-right: 65px;
+  width: 750px;
 }
 
 .inline-form {

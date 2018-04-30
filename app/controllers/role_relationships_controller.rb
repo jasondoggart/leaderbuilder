@@ -25,11 +25,11 @@ class RoleRelationshipsController < ApplicationController
   def assign_followers(leading_role_type)
     case leading_role_type
     when 'Director'
-      @ministry.roles.where(role_type: 'Coach')
+      @ministry.roles.where(role_type: 'Coach', active: true)
     when 'Coach'
-      @ministry.roles.where(role_type: 'Team Leader')
+      @ministry.roles.where(role_type: 'Team Leader', active: true)
     when 'Team Leader'
-      @ministry.roles.where(role_type: 'Team Member')
+      @ministry.roles.where(role_type: 'Team Member', active: true)
     end
   end
 

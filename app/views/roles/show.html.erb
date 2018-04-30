@@ -20,18 +20,9 @@
       </div>
       <%=
         link_to 'Update',
-        edit_role_path(@role),
-        class: 'action-item-text pretty-link'
-      %>
-    </div>
-    <div class="action-item">
-      <div class="action-item-icon">
-      </div>
-      <%=
-        link_to 'Delete',
-        role_path(@role),
-        method: :delete,
-        class: 'action-item-text pretty-link'
+        update_role_path(:role => @role),
+        class: 'action-item-text pretty-link',
+        id: 'update_role_link'
       %>
     </div>
   </div>

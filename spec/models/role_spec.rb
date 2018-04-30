@@ -29,6 +29,10 @@ RSpec.describe Role, type: :model do
       @role.role_type = ''
       expect(@role).to_not be_valid
     end
+
+    it 'is set to active by default' do
+      expect(@role.active).to eq(true)
+    end
   end
 
 end

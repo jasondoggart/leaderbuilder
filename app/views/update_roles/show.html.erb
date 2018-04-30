@@ -1,0 +1,134 @@
+<div class="breadcrumbs">
+  <%=
+    link_to 'Ministries',
+    ministries_path
+  %> /
+  <%=
+    link_to @role.ministry.name,
+    ministry_path(@role.ministry)
+  %> /
+  Roles /
+  <%=
+    link_to @role.name,
+    role_path(@role)
+  %> /
+  Update Role
+</div>
+<div class="section-heading">
+  Update <%= @role.name %>
+</div>
+<div class="sub-section-title">
+  <div class="sub-section-icon">
+    <i class="fas fa-list-ul"></i>
+  </div>
+  <div class="item-sub-heading-text">
+    Details
+  </div>
+</div>
+<div class="inline-form">
+  <div class="inline-form-label">
+    <div class="inline-form-label-icon">
+      <i class="fas fa-list-ul"></i>
+    </div>
+    <div class="inline-form-label-text">
+      Role Type
+    </div>
+  </div>
+  <div class="inline-form-text">
+    <%= @role.role_type %>
+  </div>
+  <div class="inline-form-label">
+    <div class="inline-form-label-icon">
+      <i class="far fa-user"></i>
+    </div>
+    <div class="inline-form-label-text">
+      Team Member
+    </div>
+  </div>
+  <div class="inline-form-text">
+    <%= @role.team_member.full_name %>
+  </div>
+</div>
+<div class="sub-section-title">
+  <div class="sub-section-icon">
+    <i class="fas fa-pencil-alt"></i>
+  </div>
+  <div class="item-sub-heading-text">
+    Update Role Name
+  </div>
+</div> 
+<div class="section-sub-heading">
+  Use this option to update the title of the role. Note that this should only
+  be used if the role is the same, but the title has changed. If the team member
+  is actually in a new role, this role should be marked as inactive, and a new 
+  role should be created.
+</div>
+<div class="inline-form">
+  <div class="inline-form-label">
+    <div class="inline-form-label-icon">
+      <i class="fas fa-pencil-alt"></i>
+    </div>
+    <div class="inline-form-label-text">
+      Update Name
+    </div>
+  </div>
+  <div class="inline-form-text">
+    <%=
+      link_to 'Click here to update',
+      edit_role_path(@role),
+      id: 'edit_role_title',
+      class: 'pretty-link'
+    %>
+  </div>
+</div>
+<div class="sub-section-title">
+  <div class="sub-section-icon">
+    <i class="fas fa-minus-circle"></i>
+  </div>
+  <div class="item-sub-heading-text">
+    Delete Role
+  </div>
+</div> 
+<div class="section-sub-heading">
+  LeaderBuilder keeps a history of roles to track the progression of leadership
+  development. To ensure this history is accurate, please let us know why you
+  would like to remove this role.
+</div>
+<div class="inline-form">
+  <div class="inline-form-label">
+    <div class="inline-form-label-icon">
+      <i class="fas fa-undo"></i>
+    </div>
+    <div class="inline-form-label-text">
+      Accidental Entry
+    </div>
+  </div>
+  <div class="inline-form-text">
+    <%=
+      link_to 'This role was added by accident - it never should have been here.',
+      role_path(@role),
+      method: :delete,
+      data: { confirm: 'Are you sure you want to remove this role?' },
+      id: 'delete_mistakenly_added',
+      class: 'pretty-link'
+    %>
+  </div>
+  <div class="inline-form-label">
+    <div class="inline-form-label-icon">
+      <i class="far fa-minus-square"></i>
+    </div>
+    <div class="inline-form-label-text">
+      Remove Role
+    </div>
+  </div>
+  <div class="inline-form-text">
+    <%=
+      link_to 'This role is no longer active',
+      role_path(@role, role: { active: false }, set_inactive: true),
+      method: :put,
+      data: { confirm: 'Are you sure you want to set this role to inactive?' },
+      id: 'set_role_to_inactive',
+      class: 'pretty-link'
+    %>
+  </div>
+</div>

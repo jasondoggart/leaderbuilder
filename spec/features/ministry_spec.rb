@@ -47,4 +47,13 @@ describe 'Mininstry' do
     expect(page).to have_content(role3.name)
   end
 
+  it 'shows only active roles' do
+    ministry = FactoryBot.create(:ministry)
+    active_role = FactoryBot.create(:role, ministry: ministry)
+    inactive_role = FactoryBot.create(:role, ministry: ministry, active: false)
+    visit ministry_path(ministry)
+    expect(page).to have_content(active_role.team_member.full_name)
+    expect(page).to_not have_content(inactive_role.team_member.full_name)
+  end
+
 end

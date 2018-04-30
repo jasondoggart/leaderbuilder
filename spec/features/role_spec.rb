@@ -88,6 +88,14 @@ describe 'Role' do
     expect(current_path).to eq(ministry_path(ministry))
   end
 
+  it 'sets set_inactive_at to now when role marked as inactive' do
+    role = FactoryBot.create(:role)
+    visit update_role_path(:role => role)
+    click_on('set_role_to_inactive')
+    expect(role.reload.set_inactive_at).to_not eq(nil)
+
+  end
+
   it 'removes all role relationships when role active status is changed to false' do
     leading_role = FactoryBot.create(:role, role_type: 'Coach')
     following_role = FactoryBot.create(:role, role_type: 'Team Leader')

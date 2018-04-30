@@ -30,6 +30,8 @@ class RolesController < ApplicationController
       flash[:success] = 'Role updated'
       if params[:set_inactive]
         RoleRelationship.where(leading_role: @role).delete_all
+        @role.set_inactive_at = Time.now
+        @role.save
         redirect_to ministry_path(@ministry)
       else
         redirect_to role_path(@role)

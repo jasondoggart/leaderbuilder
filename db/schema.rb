@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180430204934) do
+ActiveRecord::Schema.define(version: 20180430223450) do
 
   create_table "apprentice_relationships", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20180430204934) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "active", default: true
+    t.datetime "set_inactive_at"
     t.index ["ministry_id"], name: "index_roles_on_ministry_id"
   end
 

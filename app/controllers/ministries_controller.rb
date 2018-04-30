@@ -34,7 +34,7 @@ class MinistriesController < ApplicationController
   end
 
   def show
-    @roles = @ministry.roles.paginate(:page => params[:page], :per_page => 15)
+    @roles = @ministry.roles.where(active: true).paginate(:page => params[:page], :per_page => 15)
   end
 
   protected

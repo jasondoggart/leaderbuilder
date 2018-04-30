@@ -79,6 +79,16 @@ describe 'Role' do
     expect(RoleRelationship.count).to eq(0)
   end
 
+  it 'removes all apprentice relationships when deleted' do
+    leading_role = FactoryBot.create(:role, role_type: 'Coach')
+    apprentice_role = FactoryBot.create(:role, role_type: 'Team Leader')
+    ApprenticeRelationship.create(role: leading_role,
+                                  apprentice: apprentice_role.team_member)
+    visit update_role_path(:role => leading_role)
+    click_on('delete_mistakenly_added')
+    expect(leading_role.apprentice_relationships.count).to eq(0)
+  end
+
   it 'sets the role active status to false if the role is not longer active' do
     role = FactoryBot.create(:role)
     ministry = role.ministry
@@ -103,6 +113,16 @@ describe 'Role' do
     visit update_role_path(:role => leading_role)
     click_on('set_role_to_inactive')
     expect(leading_role.following_relationships.count).to eq(0)
+  end
+
+  it 'removes all apprentice relationships when role active statis changed to false' do
+    leading_role = FactoryBot.create(:role, role_type: 'Coach')
+    apprentice_role = FactoryBot.create(:role, role_type: 'Team Leader')
+    ApprenticeRelationship.create(role: leading_role,
+                                  apprentice: apprentice_role.team_member)
+    visit update_role_path(:role => leading_role)
+    click_on('set_role_to_inactive')
+    expect(leading_role.apprentice_relationships.count).to eq(0)
   end
 
   it 'can have its title edited' do
